@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" id="btap1" value="Bai Tap 1 !" onclick="btap1();"/><br/>
+<input type="button" id="btap2" value="Bai Tap 2 !" onclick="btap2();"/><br/>
+<input type="button" id="btap3_4" value="Bai Tap 3 + 4 !" onclick="btap34();"/><br/>
+<input type="button" id="btap5" value="Bai Tap 5 !" onclick="btap5();"/><br/>
+<input type="button" id="btap6" value="Bai Tap 6 !" onclick="btap6();"/><br/>
+
+<div id="showMessage"></div>
+<script>
+
+    let showMessageDiv = document.getElementById('showMessage');
+    
+    function btap6() {
+        let arrBtap6 = [];
+        let numArr = parseInt(prompt(),0);
+
+        for (i = 0; i < numArr; i++) {
+            let kytu = prompt();
+            arrBtap6.push(kytu);
+        }
+
+        for (x = 0; x < arrBtap6.length; x++) {
+                if(arrBtap6[x] == '-'){
+                    arrBtap6.splice(x,1,'_');
+                }
+        }
+
+        showMessageDiv.innerHTML = arrBtap6;
+    }
+
+    function btap5() {
+        let arrBtap5_1 = [];
+        let arrBtap5_2 = [];
+        let flag = true;
+        let showMess;
+
+        let numArr1 = parseInt(prompt(),0);
+        let numArr2 = parseInt(prompt(),0);
+
+        for (i = 0; i < numArr1; i++) {
+            let kytu = prompt();
+            arrBtap5_1.push(kytu);
+        }
+
+        for (j = 0; j < numArr2; j++) {
+            let kytu = prompt();
+            arrBtap5_2.push(kytu);
+        }
+
+        if (arrBtap5_1.length === arrBtap5_2.length){
+            for (i=0;i<arrBtap5_1.length;i++){
+                if (arrBtap5_1[i] !== arrBtap5_2[i]){
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag){
+                showMess = arrBtap5_1+' bang '+arrBtap5_2;
+            }else{
+                showMess = arrBtap5_1+" va "+arrBtap5_2+" co so ky tu bang nhau nhung gia tri trong do khac nhau "
+            }
+        }else{
+            showMess = arrBtap5_1+' khac '+arrBtap5_2;
+        }
+
+        showMessageDiv.innerHTML = showMess;
+    }
+
+    function btap34() {
+        let arrBtap3 = [];
+        let numArr = parseInt(prompt(),0);
+        let arrCheck = [0,1,2,3,4,5,6,7,8,9];
+        let demSo = 0;
+
+        for (i = 0; i < numArr; i++) {
+            let kitu = prompt();
+            arrBtap3.push(kitu);
+        }
+
+        let bbbb = arrBtap3.join('').toString();
+
+        for (x=0;x<bbbb.length;x++){
+            for (y = 0; y < arrCheck.length; y++) {
+                if (arrCheck[y] === parseInt(bbbb[x])){
+                    demSo++;
+                }
+            }
+        }
+
+        showMessageDiv.innerHTML = 'Co '+demSo+' ky tu so trong mang : '+arrBtap3.join('-');
+    }
+
+    function btap2() {
+        let arrBtap2 = [];
+        let numArr = parseInt(prompt(),0);
+
+        for (i = 0; i < numArr; i++) {
+            let kitu = prompt();
+            arrBtap2.push(kitu);
+        }
+
+        showMessageDiv.innerHTML = arrBtap2.join('-') + '<br>' + arrBtap2.reverse().join('-');
+    }
+
+    function btap1() {
+        let arrBtap1 = [];
+        let numArr1 = parseInt(prompt(),0);
+        let numArr2 = parseInt(prompt(),0);
+        let showMessage = '';
+
+        for (i = 0; i < numArr1; i++) {
+            arrBtap1.push([]);
+            for (j = 0; j < numArr2; j++) {
+                let num = parseInt(prompt(),0);
+                arrBtap1[i].push(num);
+            }
+        }
+
+        for (let x in arrBtap1){
+            showMessage += '"row ' + (parseInt(x)+1) + '"<br>';
+            for (let y in arrBtap1[x]){
+                showMessage += '"' + arrBtap1[x][y] + '"<br>';
+            }
+        }
+        showMessageDiv.innerHTML = showMessage;
+    }
+</script>
+</body>
+</html>
