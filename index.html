@@ -19,6 +19,8 @@
     function btap6() {
         let arrBtap6 = [];
         let numArr = parseInt(prompt(),0);
+        let a = '';
+        let arrShow = [];
 
         for (i = 0; i < numArr; i++) {
             let kytu = prompt();
@@ -26,12 +28,18 @@
         }
 
         for (x = 0; x < arrBtap6.length; x++) {
-                if(arrBtap6[x] == '-'){
-                    arrBtap6.splice(x,1,'_');
+            for (y = 0; y < arrBtap6[x].length; y++) {
+                if (arrBtap6[x][y] == '-'){
+                   a +='_';
+                }else {
+                   a +=(arrBtap6[x][y]);
                 }
+            }
+            arrShow.push(a);
+            a = '';
         }
 
-        showMessageDiv.innerHTML = arrBtap6;
+        showMessageDiv.innerHTML = arrShow.join('---');
     }
 
     function btap5() {
